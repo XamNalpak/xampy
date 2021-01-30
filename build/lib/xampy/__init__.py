@@ -10,9 +10,7 @@ def showInfo(dataframe):
     print("-"*50)
     print(dataframe.info())
 
-def NumericalPivot(dataframe,features,target):
-    dataframe[[features]].groupby([target], as_index=False).mean().sort_values(by=target, ascending=False)
 
-def sexBin(datframe,genderCol):
+def sexBin(dataframe,genderCol):
     dataframe[genderCol] = dataframe[genderCol].map( {'female': 1, 'male': 0} ).astype(int)
     return dataframe

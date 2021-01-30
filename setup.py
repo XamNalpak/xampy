@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="XamPy",
-    version="0.0.16",
+    version="0.0.17",
     author="Max Paul",
     author_email="maxkpaul21@gmail.com",
     description="A small example package",
