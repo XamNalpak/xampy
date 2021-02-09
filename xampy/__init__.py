@@ -55,3 +55,15 @@ def catPlots(dataframe,items:list):
         plot_hist(n)
 
 
+def countMissing(df):
+    print(df.isnull().sum())
+
+def ModeFill(dataframe,colName):
+    dataframe[colName] = dataframe[colName].fillna(df[colName].mode()[0])
+
+def MeanFill(dataframe,colName):
+    dataframe[colName] = dataframe[colName].fillna(df[colName].mean().round(3))
+
+def remove_numbers(text): 
+    result = re.sub(r'\d+', '', text) 
+    return result 
