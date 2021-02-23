@@ -66,4 +66,14 @@ def MeanFill(dataframe,colName):
 
 def remove_numbers(text): 
     result = re.sub(r'\d+', '', text) 
-    return result 
+    return result
+
+#make a new df where a col == a certain val
+def InDF(df,col,val):
+    df = df[topics_data[col] == val]
+    return df
+
+#create a new df where it takes all rows where a col isnt equal
+def OutDF(df,col,val):
+    df = df[topics_data[col] != val]
+    return df
