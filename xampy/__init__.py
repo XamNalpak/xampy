@@ -81,6 +81,12 @@ def subSetDf(dataframe,col,value,condition):
         print(f'{condition} is not a valid selection, choose from the list: \n gt\nlt\gte\nlte\neq')
 
 
+# takes all things where its not equal to this value        
+def OutDF(df,col,val):
+    df = df[topics_data[col] != val]
+    return df
+
+
 def renameCols(df,remove,replace):
   df = df.rename(columns=lambda x: x.strip(remove))
   df = df.rename(columns=lambda x: x.replace(' ',replace))
@@ -102,10 +108,3 @@ def dataTypeSplit(df):
     nonnumdf = df[nonnums]
 
     return numdf,nonnumdf
-
-
-
-#would like to add text data work
-#more ml stuff 
-#methods of doing dataframe mathmatics
-#more dataframe operations that i can think of
