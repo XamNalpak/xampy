@@ -3,20 +3,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def makeCSV(filepath):
+
+
+#creates a dataframe from a file path
+def makeData(filepath):
     df = pd.read_csv(filepath)
     return df
 
+# prints out quick statistical information
 def showInfo(dataframe):
     print(dataframe.describe())
     print("-"*50)
     print(dataframe.info())
 
-
-def sexBin(dataframe,genderCol):
-    dataframe[genderCol] = dataframe[genderCol].map( {'female': 1, 'male': 0} ).astype(int)
-    dataframe[genderCol] = dataframe[genderCol].map( {'Female': 1, 'Male': 0} ).astype(int)
-    return dataframe
 
 def numBarPlot(dataframe, items:list):
     def bar_plot(variable):
@@ -60,10 +59,53 @@ def countMissing(df):
 
 def ModeFill(dataframe,colName):
     dataframe[colName] = dataframe[colName].fillna(df[colName].mode()[0])
+    return dataframe
 
 def MeanFill(dataframe,colName):
     dataframe[colName] = dataframe[colName].fillna(df[colName].mean().round(3))
+    return dataframe
 
-def remove_numbers(text): 
-    result = re.sub(r'\d+', '', text) 
-    return result 
+
+def subSetDf(dataframe,col,value,condition):
+    if condition == 'gte':
+        df = df[df[col] >= value]
+    elif condition == 'lte':
+        df = df[df[col] <= value]
+    elif condition == 'eq':
+        df = df[df[col] == value]
+    elif condition == 'gt':
+        df = df[df[col] > value]
+    elif condition == 'lt':
+        df = df[df[col] < value]
+    else:
+        print(f'{condition} is not a valid selection, choose from the list: \n gt\nlt\gte\nlte\neq')
+
+
+def renameCols(df,remove,replace):
+  df = df.rename(columns=lambda x: x.strip(remove))
+  df = df.rename(columns=lambda x: x.replace(' ',replace))
+  return df
+
+
+def dataTypeSplit(df):
+    nums = []
+    nonnums = []
+
+    for i in df.columns:
+      if df[i].dtypes == int or df[i].dtypes == float:
+        nums.append(i)
+      else:
+        nonnums.append(i)
+
+    numdf = df[nums]
+
+    nonnumdf = df[nonnums]
+
+    return numdf,nonnumdf
+
+
+
+#would like to add text data work
+#more ml stuff 
+#methods of doing dataframe mathmatics
+#more dataframe operations that i can think of
