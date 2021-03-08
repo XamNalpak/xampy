@@ -1,5 +1,11 @@
 # XamPy
-## _Information_
+## Links
+- [Code of Conduct](https://github.com/XamNalpak/xampy/blob/main/CODE-OF-CONDUCT.md)
+- [Contributing](https://github.com/XamNalpak/xampy/blob/main/CONTRIBUTING.md)
+- [Issues](https://github.com/XamNalpak/xampy/issues)
+
+
+# _Information_
 
 
 XamPy is a Data Science Package written in Python. 
