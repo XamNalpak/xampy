@@ -33,7 +33,7 @@ pip3 install xampy
 ## Reading in data from file path
 ```
 from xampy import xampy as xp
-path = C:\Users\User\Documents\Data\data.csv
+path = 'C:\Users\User\Documents\Data\data.csv'
 
 # using makeData() to read in data
 data = xp.makeData(path)
