@@ -1,5 +1,7 @@
 [Home](https://github.com/XamNalpak/xampy)
 
+[Contribute Format](https://github.com/XamNalpak/xampy/tree/main/.github/ISSUE_TEMPLATE)
+
 # Contributing to XamPy projects
 
 A big welcome and thank you for considering contributing to the XamPy open source projects! It’s people like you that make it a reality for more people to work with python.
