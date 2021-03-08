@@ -1,5 +1,5 @@
-# README
-## _Information Regarding xampy_
+# XamPy
+## _Information_
 
 
 XamPy is a Data Science Package written in Python. 
@@ -50,6 +50,7 @@ data = xp.meanFill(data,'money')
 
 # example column Gender (Binary or text) has missing values
 data = xp.modeFill(data,'Gender')
+
 ```
 if we want to seperate the data into genders
 eq=equal
@@ -62,9 +63,6 @@ FOR STRINGS WE USE 'eq', for any numerical data we can use any comparrison #oper
 ```
 males = xp.SubSetDf(data,'Gender','Male','eq')
 females = xp.SubSetDf(data,'Gender','Female','eq')
-
-
-
 ```
 
 
