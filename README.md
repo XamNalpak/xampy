@@ -3,6 +3,7 @@
 - [Code of Conduct](https://github.com/XamNalpak/xampy/blob/main/CODE-OF-CONDUCT.md)
 - [Contributing](https://github.com/XamNalpak/xampy/blob/main/CONTRIBUTING.md)
 - [Issues](https://github.com/XamNalpak/xampy/issues)
+- [License](https://github.com/XamNalpak/xampy/blob/main/LICENSE)
 
 
 # _Information_

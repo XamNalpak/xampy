@@ -1,6 +1,0 @@
-README.md
-setup.py
-XamPak.egg-info/PKG-INFO
-XamPak.egg-info/SOURCES.txt
-XamPak.egg-info/dependency_links.txt
-XamPak.egg-info/top_level.txt
