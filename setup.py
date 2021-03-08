@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="XamPy",
-    version="0.0.18",
+    version="0.1.0",
     author="Max Paul",
     author_email="maxkpaul21@gmail.com",
-    description="A small example package",
+    description="A Data Science Package written in python.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="",
