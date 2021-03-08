@@ -30,7 +30,7 @@ or
 pip3 install xampy
 ```
 # Example Use cases
-## reading in data from file path
+## Reading in data from file path
 ```
 from xampy import xampy as xp
 path = C:\Users\User\Documents\Data\data.csv
