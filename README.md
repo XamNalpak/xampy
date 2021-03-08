@@ -42,7 +42,7 @@ data = xp.makeData(path)
 xp.showInfo(data)
 
 # removing white space from column names and insert an underscore
-data = xp.renameCols(data,'','_')
+data = xp.renameCols(data,' ','_')
 
 # splitting the data into numerical and nonnumerical sections
 
