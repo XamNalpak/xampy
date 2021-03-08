@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 
 
 
-
 #creates a dataframe from a file path
 def makeData(filepath):
     df = pd.read_csv(filepath)
@@ -58,11 +57,11 @@ def countMissing(df):
     print(df.isnull().sum())
 
 def ModeFill(dataframe,colName):
-    dataframe[colName] = dataframe[colName].fillna(df[colName].mode()[0])
+    dataframe[colName] = dataframe[colName].fillna(dataframe[colName].mode()[0])
     return dataframe
 
 def MeanFill(dataframe,colName):
-    dataframe[colName] = dataframe[colName].fillna(df[colName].mean().round(3))
+    dataframe[colName] = dataframe[colName].fillna(dataframe[colName].mean().round(3))
     return dataframe
 
 
@@ -83,7 +82,7 @@ def subSetDf(dataframe,col,value,condition):
 
 # takes all things where its not equal to this value        
 def OutDF(df,col,val):
-    df = df[topics_data[col] != val]
+    df = df[df[col] != val]
     return df
 
 
