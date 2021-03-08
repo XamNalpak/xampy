@@ -17,7 +17,7 @@ XamPy is a Data Science Package written in Python.
 
 ## Packages Used
 
-Dillinger uses a number of open source projects to work properly:
+XamPy uses a number of open source projects to work properly:
 
 - Pandas - Data manipulation tool for python
 - Numpy - awesome tool for matrix/array mathmatics
