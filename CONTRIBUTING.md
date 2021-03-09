@@ -61,4 +61,4 @@ In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susa
 ## Getting Help
 
 Email the lead Contributor for questions !
-[Max Paul](maxkpaul21@gmail.com)
+[Max Paul](mailto:maxkpaul21@gmail.com)

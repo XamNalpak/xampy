@@ -72,13 +72,13 @@ males = xp.SubSetDf(data,'Gender','Male','eq')
 females = xp.SubSetDf(data,'Gender','Female','eq')
 ```
 # Contributors and Contributions
-IF YOU ARE A CONTRIBUTOR AND ARE NOT LISTED PLEASE EMAIL [MAX](maxkpaul21@gmail.com) or submit a new issue.
+IF YOU ARE A CONTRIBUTOR AND ARE NOT LISTED PLEASE EMAIL [Max Paul](mailto:maxkpaul21@gmail.com) or submit a new issue.
 
- - Max Paul
+ - Max Paul 
    - Lead Contributor/Founder
    - Bachelor Of Science In Data Science from Bryant Unversity.
    - Software engineer by day for TJX.
-   
+
 
 ## License
 
