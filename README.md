@@ -59,14 +59,13 @@ data = xp.meanFill(data,'money')
 data = xp.modeFill(data,'Gender')
 
 ```
-if we want to seperate the data into genders
-eq=equal
-gte=greater than equal to
-lte=less than equal to
-lt = less than
-gt = greater than
+ - eq=equal
+ - gte=greater than equal to
+ - lte=less than equal to
+ - lt = less than
+ - gt = greater than
 
-FOR STRINGS WE USE 'eq', for any numerical data we can use any comparrison #operator
+#### FOR STRINGS WE USE 'eq', for any numerical data we can use any comparrison #operator
 ```
 males = xp.SubSetDf(data,'Gender','Male','eq')
 females = xp.SubSetDf(data,'Gender','Female','eq')

@@ -1,9 +1,20 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
-#forking testing!!
-
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer 
+from nltk import word_tokenize
+from nltk import WordPunctTokenizer
+from nltk import download
+from nltk import TweetTokenizer
+from nltk.corpus import stopwords
+import string
+from textblob import TextBlob
+from textblob.sentiments import PatternAnalyzer
+import datetime as datetime
+import matplotlib.pyplot as plt
+download('stopwords')
+download('punkt')
+stop_words = set(stopwords.words("english"))
 
 #creates a dataframe from a file path
 def makeData(filepath):
@@ -108,3 +119,53 @@ def dataTypeSplit(df):
     nonnumdf = df[nonnums]
 
     return numdf,nonnumdf
+
+#sentiment analysis for larger chunks of data, handling punctuation and stop word removal
+def Remove_Punctuation(tokenList):
+    punctList = list(string.punctuation)
+    punctList.remove("'")
+    return [word for word in tokenList if word not in punctList]
+def Remove_Stop_Words(tokenList, stop_words):
+    return [word for word in tokenList if word not in stop_words]
+def PreProcess(x):
+    return Remove_Punctuation(Remove_Stop_Words(TweetToken(x),stop_words))
+def Tokenize(text):
+    return TweetTokenizer().tokenize(str(text).lower())
+
+
+# for seniment analysis on larger chunks of text, bigger than social 
+# returns appended columns of comma sep subjectivity and polarity
+def bigSenti(df,column):
+    def Remove_Punctuation(tokenList):
+        punctList = list(string.punctuation)
+        punctList.remove("'")
+        return [word for word in tokenList if word not in punctList]
+    def Remove_Stop_Words(tokenList, stop_words):
+        return [word for word in tokenList if word not in stop_words]
+    def PreProcess(x):
+        return Remove_Punctuation(Remove_Stop_Words(Tokenize(x),stop_words))
+    def Tokenize(text):
+        return TweetTokenizer().tokenize(str(text).lower())
+    df = df[df[column].notnull()].copy()
+    df[f'{column}_Tokenized'] = df[column].apply(lambda x: PreProcess(x))
+    df[f'{column}_Sentiment'] = df[f'{column}_Tokenized'].apply(lambda x: list(TextBlob(" ".join(x), analyzer=PatternAnalyzer()).sentiment))
+    
+    for sentiment,index in zip(['polarity', 'subjectivity'],[0,1]):
+        df[f'{column}_{sentiment}'] = df[f'{column}_Sentiment'].apply(lambda x: x[index])
+        
+    return df
+
+
+
+# takes in a dataframe and a coiumn containing the text from social media sites
+# returns the dataframe with more information than bigSenti and shows a compound overall score
+def socialSentiment(df,col):
+    #load VADER
+    analyzer = SentimentIntensityAnalyzer()
+    #Add VADER metrics to dataframe
+    df['compound'] = [analyzer.polarity_scores(v)['compound'] for v in df[col]]
+    df['neg'] = [analyzer.polarity_scores(v)['neg'] for v in df[col]]
+    df['neu'] = [analyzer.polarity_scores(v)['neu'] for v in df[col]]
+    df['pos'] = [analyzer.polarity_scores(v)['pos'] for v in df[col]]
+    df.head(3)
+    return df
