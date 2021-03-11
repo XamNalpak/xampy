@@ -1,4 +1,9 @@
-[Home](https://github.com/XamNalpak/xampy)
+## Links
+- [Home](https://github.com/XamNalpak/xampy)
+- [Code of Conduct](https://github.com/XamNalpak/xampy/blob/main/CODE-OF-CONDUCT.md)
+- [Issues](https://github.com/XamNalpak/xampy/issues)
+- [License](https://github.com/XamNalpak/xampy/blob/main/LICENSE)
+- [Current Functions](https://github.com/XamNalpak/xampy/blob/main/FUNCTIONS)
 
 [Contribute Format](https://github.com/XamNalpak/xampy/tree/main/.github/ISSUE_TEMPLATE)
 
