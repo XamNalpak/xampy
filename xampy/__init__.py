@@ -133,7 +133,8 @@ def Tokenize(text):
     return TweetTokenizer().tokenize(str(text).lower())
 
 
-# for seniment analysis on larger chunks of text, bigger than social media
+# for seniment analysis on larger chunks of text, bigger than social 
+# returns appended columns of comma sep subjectivity and polarity
 def bigSenti(df,column):
     def Remove_Punctuation(tokenList):
         punctList = list(string.punctuation)
@@ -142,7 +143,7 @@ def bigSenti(df,column):
     def Remove_Stop_Words(tokenList, stop_words):
         return [word for word in tokenList if word not in stop_words]
     def PreProcess(x):
-        return Remove_Punctuation(Remove_Stop_Words(TweetToken(x),stop_words))
+        return Remove_Punctuation(Remove_Stop_Words(Tokenize(x),stop_words))
     def Tokenize(text):
         return TweetTokenizer().tokenize(str(text).lower())
     df = df[df[column].notnull()].copy()
@@ -157,13 +158,14 @@ def bigSenti(df,column):
 
 
 # takes in a dataframe and a coiumn containing the text from social media sites
+# returns the dataframe with more information than bigSenti and shows a compound overall score
 def socialSentiment(df,col):
     #load VADER
     analyzer = SentimentIntensityAnalyzer()
     #Add VADER metrics to dataframe
     df['compound'] = [analyzer.polarity_scores(v)['compound'] for v in df[col]]
-    df['neg'] = [analyzer.polarity_scores(v)['neg'] for v in data[col]]
-    df['neu'] = [analyzer.polarity_scores(v)['neu'] for v in data[col]]
-    df['pos'] = [analyzer.polarity_scores(v)['pos'] for v in data[col]]
+    df['neg'] = [analyzer.polarity_scores(v)['neg'] for v in df[col]]
+    df['neu'] = [analyzer.polarity_scores(v)['neu'] for v in df[col]]
+    df['pos'] = [analyzer.polarity_scores(v)['pos'] for v in df[col]]
     df.head(3)
     return df
