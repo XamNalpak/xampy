@@ -72,11 +72,11 @@ def catPlots(dataframe,items:list):
 def countMissing(df):
     print(df.isnull().sum())
 
-def ModeFill(dataframe,colName):
+def modeFill(dataframe,colName):
     dataframe[colName] = dataframe[colName].fillna(dataframe[colName].mode()[0])
     return dataframe
 
-def MeanFill(dataframe,colName):
+def meanFill(dataframe,colName):
     dataframe[colName] = dataframe[colName].fillna(dataframe[colName].mean().round(3))
     return dataframe
 
@@ -167,7 +167,7 @@ def socialSentiment(df,col):
 # linear regression model quickly on numerical data!!
 def linAlgo(df,target,test_size,random_state):
     X = df.drop(target,axis=1)
-    y = data['bmi']
+    y = data[target]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
     regr = linear_model.LinearRegression()

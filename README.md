@@ -4,6 +4,7 @@
 - [Contributing](https://github.com/XamNalpak/xampy/blob/main/CONTRIBUTING.md)
 - [Issues](https://github.com/XamNalpak/xampy/issues)
 - [License](https://github.com/XamNalpak/xampy/blob/main/LICENSE)
+- [Current Functions](https://github.com/XamNalpak/xampy/blob/main/FUNCTIONS)
 
 
 # _Information_
