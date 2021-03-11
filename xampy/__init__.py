@@ -120,17 +120,6 @@ def dataTypeSplit(df):
 
     return numdf,nonnumdf
 
-#sentiment analysis for larger chunks of data, handling punctuation and stop word removal
-def Remove_Punctuation(tokenList):
-    punctList = list(string.punctuation)
-    punctList.remove("'")
-    return [word for word in tokenList if word not in punctList]
-def Remove_Stop_Words(tokenList, stop_words):
-    return [word for word in tokenList if word not in stop_words]
-def PreProcess(x):
-    return Remove_Punctuation(Remove_Stop_Words(TweetToken(x),stop_words))
-def Tokenize(text):
-    return TweetTokenizer().tokenize(str(text).lower())
 
 
 # for seniment analysis on larger chunks of text, bigger than social 
