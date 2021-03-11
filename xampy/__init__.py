@@ -17,6 +17,9 @@ download('stopwords')
 download('punkt')
 stop_words = set(stopwords.words("english"))
 
+
+#looking
+
 #creates a dataframe from a file path
 def makeData(filepath):
     df = pd.read_csv(filepath)
