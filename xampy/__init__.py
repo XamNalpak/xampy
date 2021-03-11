@@ -1,3 +1,4 @@
+# WRITTEN BY XAMPAK
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -158,3 +159,36 @@ def socialSentiment(df,col):
     df['pos'] = [analyzer.polarity_scores(v)['pos'] for v in df[col]]
     df.head(3)
     return df
+
+
+# linear regression model quickly on numerical data!!
+def linAlgo(df,target,test_size,random_state):
+    X = df.drop(target,axis=1)
+    y = data['bmi']
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+    regr = linear_model.LinearRegression()
+    regr.fit(X_train, y_train)
+    y_pred = regr.predict(X_test)
+
+
+    labs = X_train.columns.tolist()
+    coef = regr.coef_.squeeze().tolist()
+    # Zip together
+    labels_coef = list(zip(labs, coef))
+
+    print('The feature and its respective coefficient: \n')
+    # Verify the result
+    for i in labels_coef:
+        print(i)
+
+    print('\nMean squared error: %.4f\n'
+          % mean_squared_error(y_test, y_pred))
+    # The coefficient of determination: 1 is perfect prediction
+    print('\nCoefficient of determination: %.4f\n'
+          % r2_score(y_test, y_pred))
+    print('\nMean Absolute Error: %.4f\n'
+      % mean_absolute_error(y_test,y_pred))
+    print('\nMax Error: %.4f\n'
+      % max_error(y_test,y_pred))
+
