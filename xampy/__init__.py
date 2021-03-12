@@ -34,7 +34,7 @@ def showInfo(dataframe):
     print(dataframe.info())
     print("-"*50)
     print("Dataframe Head:\n\n")
-    print(data.head(5))
+    print(dataframe.head(5))
 
 
 def numBarPlot(dataframe, items:list):
