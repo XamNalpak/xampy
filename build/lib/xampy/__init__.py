@@ -1,3 +1,4 @@
+# WRITTEN BY XAMPAK
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,6 +17,9 @@ download('stopwords')
 download('punkt')
 stop_words = set(stopwords.words("english"))
 
+
+#looking
+
 #creates a dataframe from a file path
 def makeData(filepath):
     df = pd.read_csv(filepath)
@@ -23,9 +27,14 @@ def makeData(filepath):
 
 # prints out quick statistical information
 def showInfo(dataframe):
+    print("Descriptive stats:\n\n")
     print(dataframe.describe())
     print("-"*50)
+    print("Dataframe information:\n\n")
     print(dataframe.info())
+    print("-"*50)
+    print("Dataframe Head:\n\n")
+    print(dataframe.head(5))
 
 
 def numBarPlot(dataframe, items:list):
@@ -68,11 +77,11 @@ def catPlots(dataframe,items:list):
 def countMissing(df):
     print(df.isnull().sum())
 
-def ModeFill(dataframe,colName):
+def modeFill(dataframe,colName):
     dataframe[colName] = dataframe[colName].fillna(dataframe[colName].mode()[0])
     return dataframe
 
-def MeanFill(dataframe,colName):
+def meanFill(dataframe,colName):
     dataframe[colName] = dataframe[colName].fillna(dataframe[colName].mean().round(3))
     return dataframe
 
@@ -91,6 +100,16 @@ def subSetDf(dataframe,col,value,condition):
     else:
         print(f'{condition} is not a valid selection, choose from the list: \n gt\nlt\gte\nlte\neq')
 
+# dimension row or col
+def dropnaDim(data,dimension):
+    dimension = dimension.lower()
+    if dimension =='row':
+        data = data.dropna(axis=0)
+    elif dimension == 'col':
+        data = data.dropna(axis=1)
+    else:
+        print('Choose "row" or "col" for your dimension parameter on method of dropping.')
+    return data
 
 # takes all things where its not equal to this value        
 def OutDF(df,col,val):
@@ -103,6 +122,12 @@ def renameCols(df,remove,replace):
   df = df.rename(columns=lambda x: x.replace(' ',replace))
   return df
 
+
+def countUnique(df,col,n):
+    if n == 0:
+        print(df[col].value_counts(ascending=False,dropna=False))
+    else:
+        print(df[col].value_counts(ascending=False,dropna=False).head(n))
 
 def dataTypeSplit(df):
     nums = []
@@ -120,20 +145,10 @@ def dataTypeSplit(df):
 
     return numdf,nonnumdf
 
-#sentiment analysis for larger chunks of data, handling punctuation and stop word removal
-def Remove_Punctuation(tokenList):
-    punctList = list(string.punctuation)
-    punctList.remove("'")
-    return [word for word in tokenList if word not in punctList]
-def Remove_Stop_Words(tokenList, stop_words):
-    return [word for word in tokenList if word not in stop_words]
-def PreProcess(x):
-    return Remove_Punctuation(Remove_Stop_Words(TweetToken(x),stop_words))
-def Tokenize(text):
-    return TweetTokenizer().tokenize(str(text).lower())
 
 
 # for seniment analysis on larger chunks of text, bigger than social 
+# returns appended columns of comma sep subjectivity and polarity
 def bigSenti(df,column):
     def Remove_Punctuation(tokenList):
         punctList = list(string.punctuation)
@@ -157,6 +172,7 @@ def bigSenti(df,column):
 
 
 # takes in a dataframe and a coiumn containing the text from social media sites
+# returns the dataframe with more information than bigSenti and shows a compound overall score
 def socialSentiment(df,col):
     #load VADER
     analyzer = SentimentIntensityAnalyzer()
@@ -167,3 +183,36 @@ def socialSentiment(df,col):
     df['pos'] = [analyzer.polarity_scores(v)['pos'] for v in df[col]]
     df.head(3)
     return df
+
+
+# linear regression model quickly on numerical data!!
+def linAlgo(df,target,test_size,random_state):
+    X = df.drop(target,axis=1)
+    y = data[target]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+    regr = linear_model.LinearRegression()
+    regr.fit(X_train, y_train)
+    y_pred = regr.predict(X_test)
+
+
+    labs = X_train.columns.tolist()
+    coef = regr.coef_.squeeze().tolist()
+    # Zip together
+    labels_coef = list(zip(labs, coef))
+
+    print('The feature and its respective coefficient: \n')
+    # Verify the result
+    for i in labels_coef:
+        print(i)
+
+    print('\nMean squared error: %.4f\n'
+          % mean_squared_error(y_test, y_pred))
+    # The coefficient of determination: 1 is perfect prediction
+    print('\nCoefficient of determination: %.4f\n'
+          % r2_score(y_test, y_pred))
+    print('\nMean Absolute Error: %.4f\n'
+      % mean_absolute_error(y_test,y_pred))
+    print('\nMax Error: %.4f\n'
+      % max_error(y_test,y_pred))
+
