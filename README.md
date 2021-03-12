@@ -7,6 +7,7 @@
 - [Current Functions](https://github.com/XamNalpak/xampy/blob/main/FUNCTIONS.md)
 
 
+
 # _Information_
 
 

@@ -27,9 +27,14 @@ def makeData(filepath):
 
 # prints out quick statistical information
 def showInfo(dataframe):
+    print("Descriptive stats:\n\n")
     print(dataframe.describe())
     print("-"*50)
+    print("Dataframe information:\n\n")
     print(dataframe.info())
+    print("-"*50)
+    print("Dataframe Head:\n\n")
+    print(data.head(5))
 
 
 def numBarPlot(dataframe, items:list):
@@ -95,6 +100,16 @@ def subSetDf(dataframe,col,value,condition):
     else:
         print(f'{condition} is not a valid selection, choose from the list: \n gt\nlt\gte\nlte\neq')
 
+# dimension row or col
+def dropnaDim(data,dimension):
+    dimension = dimension.lower()
+    if dimension =='row':
+        data = data.dropna(axis=0)
+    elif dimension == 'col':
+        data = data.dropna(axis=1)
+    else:
+        print('Choose "row" or "col" for your dimension parameter on method of dropping.')
+    return data
 
 # takes all things where its not equal to this value        
 def OutDF(df,col,val):
@@ -107,6 +122,12 @@ def renameCols(df,remove,replace):
   df = df.rename(columns=lambda x: x.replace(' ',replace))
   return df
 
+
+def countUnique(df,col,n):
+    if n == 0:
+        print(df[col].value_counts(ascending=False,dropna=False))
+    else:
+        print(df[col].value_counts(ascending=False,dropna=False).head(n))
 
 def dataTypeSplit(df):
     nums = []
