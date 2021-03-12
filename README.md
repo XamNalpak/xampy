@@ -44,6 +44,32 @@ IF YOU ARE A CONTRIBUTOR AND ARE NOT LISTED PLEASE EMAIL [Max Paul](mailto:maxkp
    - Bachelor Of Science In Data Science from Bryant Unversity.
    - Software engineer by day for TJX.
 
+# Example Use
+
+```
+import xampy as xp
+
+# reading data and showing information
+data = xp.makeData('topcsv.csv')
+xp.showInfo(data)
+
+# dropping all the rows that contain nulls get dropped
+data = xp.dropnaDim(data,'row')
+
+#counting missing data to show all values have been dropped
+xp.countMissing(data)
+
+#conducting sentiment analysis on the text data
+data = xp.socialSentiment(data,'Content')
+
+#showing the new dataframe
+data.head(10)
+
+
+
+
+
+```
 
 ## License
 
