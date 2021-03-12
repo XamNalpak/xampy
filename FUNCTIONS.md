@@ -94,6 +94,7 @@ Returns
 -------
 NOTHING
     returns a print statement showing the information at hand
+    also prints out the head count specified by the user
 
 
 
@@ -648,6 +649,83 @@ data = xp.makeData('test.csv)
 # df = data, Target = 'Age', test_size = .33, random_state = 42
 xp.linAlgo(data,'Age',.33,42)
 
+
+``` 
+<br/>
+
+## xp.countUnique(dataframe,col,n)
+
+```
+Summary:
+--------
+
+takes in a pandas dataframe and the column you want to view the unique counts of
+
+
+Parameters
+----------
+dataframe : DataFrame
+
+    pandas dataframe containing the data of interest
+
+col : string
+
+    col containing target data
+
+n : int
+
+    the count of everything
+    if set to 0 it returns all
+
+Returns
+-------
+
+prints the unque values along with their counts
+
+Example code if applicable:
+---------------------------
+#reading data using makeData
+data = xp.makeData('test.csv)
+
+
+xp.countUnique(data,'Jobs')
+
+``` 
+<br/>
+
+## xp.dropnaDim(dataframe,dimension)
+
+```
+Summary:
+--------
+
+takes in a pandas dataframe and returns the cleaned data frame with how you drop the values!
+
+
+
+Parameters
+----------
+dataframe : DataFrame
+
+    pandas dataframe containing the data of interest
+
+dimension : string
+
+    either 'row' or 'col' on which way to drop if there is a null value
+
+
+Returns
+-------
+
+returns cleaned DF without nulls
+
+Example code if applicable:
+---------------------------
+#reading data using makeData
+data = xp.makeData('test.csv)
+
+
+data = xp.dropnaDim(data,'row')
 
 ``` 
 <br/>
