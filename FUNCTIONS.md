@@ -803,3 +803,42 @@ data = xp.dropCol(data,['Age','Sex'])
 
 ``` 
 <br/>
+
+## xp.KNN(df,cols,neighbors,targ,test_size)
+
+```
+Summary:
+--------
+
+does a knn algo on the data to see its accuracy!!!
+
+
+Parameters
+----------
+df : DataFrame
+
+    pandas dataframe containing the data of interest
+
+cols : string/list
+
+    either a string or list showing the columns you want to drop
+
+neighbors : int
+    the number of K nearest neighbors
+
+
+Returns
+-------
+
+a string showing the accuracy
+
+Example code if applicable:
+---------------------------
+#reading data using makeData
+df = xp.makeData('test.csv)
+
+
+KNN(df,['Sex','height','weight'],5,'Sex',.33)
+
+``` 
+<br/>
