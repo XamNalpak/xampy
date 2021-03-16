@@ -18,4 +18,14 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    install_requres=[
+        'nltk',
+        'pandas',
+        'vaderSentiment',
+        'numpy',
+        'sklearn',
+        'textblob',
+        'sklearn',
+        'datetime'
+    ]
 )
