@@ -216,3 +216,9 @@ def linAlgo(df,target,test_size,random_state):
     print('\nMax Error: %.4f\n'
       % max_error(y_test,y_pred))
 
+def groupedAVG(df,cols):
+    return df.groupby(cols).mean()
+
+
+def dropCol(df, col):
+    return df.drop(col,axis=1)

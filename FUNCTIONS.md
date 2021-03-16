@@ -729,3 +729,77 @@ data = xp.dropnaDim(data,'row')
 
 ``` 
 <br/>
+
+## xp.groupedAVG(df,cols)
+
+```
+Summary:
+--------
+
+takes in a pandas dataframe and finds the averages of the other columns based on the filtered inputs
+
+
+
+Parameters
+----------
+df : DataFrame
+
+    pandas dataframe containing the data of interest
+
+cols : string/list
+
+    either a string or list showing the columns you want the group the data by
+
+
+Returns
+-------
+
+returns dataframe with the filtered sections with their averages
+
+Example code if applicable:
+---------------------------
+#reading data using makeData
+data = xp.makeData('test.csv)
+
+
+data = xp.groupedAVG(data,['Sex','Age'])
+
+``` 
+<br/>
+
+## xp.dropCol(df,cols)
+
+```
+Summary:
+--------
+
+takes in a pandas dataframe and a column name and drops the specified column
+
+
+
+Parameters
+----------
+df : DataFrame
+
+    pandas dataframe containing the data of interest
+
+cols : string/list
+
+    either a string or list showing the columns you want to drop
+
+
+Returns
+-------
+
+returns dataframe with the filtered sections with their averages
+
+Example code if applicable:
+---------------------------
+#reading data using makeData
+data = xp.makeData('test.csv)
+
+
+data = xp.dropCol(data,['Age','Sex'])
+
+``` 
+<br/>
