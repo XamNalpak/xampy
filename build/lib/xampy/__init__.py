@@ -145,7 +145,12 @@ def dataTypeSplit(df):
 
     return numdf,nonnumdf
 
+def groupedAVG(df,cols):
+    return df.groupby(cols).mean()
 
+
+def dropCol(df, col):
+    return df.drop(col,axis=1)
 
 # for seniment analysis on larger chunks of text, bigger than social 
 # returns appended columns of comma sep subjectivity and polarity
@@ -216,9 +221,20 @@ def linAlgo(df,target,test_size,random_state):
     print('\nMax Error: %.4f\n'
       % max_error(y_test,y_pred))
 
-def groupedAVG(df,cols):
-    return df.groupby(cols).mean()
+def KNN(df,cols,neighbors,targ,test_size):
+
+    data_knn = df[cols]
+
+    knn = KNeighborsClassifier(n_neighbors = neighbors)
+
+    x,y = data_knn.loc[:,data_knn.columns != targ], data_knn.loc[:,targ]
+
+    x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = test_size, random_state = 42)
+
+    knn.fit(x_train,y_train)
+    prediction = knn.predict(x_test)
+
+    print(f'With KNN (K={neighbors}) accuracy is: ', knn.score(x_test,y_test))
 
 
-def dropCol(df, col):
-    return df.drop(col,axis=1)
+
