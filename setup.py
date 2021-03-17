@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="XamPy",
-    version="0.1.3.3",
+    version="0.1.4",
     author="Max Paul",
     author_email="maxkpaul21@gmail.com",
     description="A Data Science Package written in python.",
