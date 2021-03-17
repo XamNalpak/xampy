@@ -13,6 +13,10 @@ from textblob import TextBlob
 from textblob.sentiments import PatternAnalyzer
 import datetime as datetime
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import mean_squared_error,r2_score,mean_absolute_error,max_error
 download('stopwords')
 download('punkt')
 stop_words = set(stopwords.words("english"))
