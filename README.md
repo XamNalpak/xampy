@@ -45,7 +45,16 @@ IF YOU ARE A CONTRIBUTOR AND ARE NOT LISTED PLEASE EMAIL [Max Paul](mailto:maxkp
    - Software engineer by day for TJX.
 
 # Example Use
+RECOMMENDED USE WITH A VIRTUAL ENV
+```
+pip install virtualenv
 
+python -m virtualenv venv
+
+venv\Scripts\activate
+
+pip install xampy
+```
 ```
 import xampy as xp
 
