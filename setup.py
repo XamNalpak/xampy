@@ -21,7 +21,8 @@ setuptools.setup(
         'sklearn',
         'textblob',
         'sklearn',
-        'datetime'
+        'datetime',
+        'matplotlib'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
