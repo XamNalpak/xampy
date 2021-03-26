@@ -838,7 +838,73 @@ Example code if applicable:
 df = xp.makeData('test.csv)
 
 
-KNN(df,['Sex','height','weight'],5,'Sex',.33)
+xp.KNN(df,['Sex','height','weight'],5,'Sex',.33)
+
+``` 
+<br/>
+
+## xp.listTodict(keys,vals)
+
+```
+Summary:
+--------
+
+takes two lists of equal length and converts the first paramter to keys and the second parameter to values
+
+Parameters
+----------
+
+KEYS AND VALUES MUST BE OF EQuAL LENGTH
+keys:
+    a list of keys for the dict
+values:
+    a list of values to pair to the keys
+
+
+Returns
+-------
+
+a string showing the accuracy
+
+Example code if applicable:
+---------------------------
+nums = [1,2,3,4,5,6]
+others = [1,2,3,4,5,6]
+
+
+x = xp.listsToDict(nums,others)
+print(x)
+``` 
+<br/>
+
+## xp.DFstrip(item,remover)
+
+```
+Summary:
+--------
+
+takes in a dataframe column that contains text data and strips off the specified character
+----------
+
+KEYS AND VALUES MUST BE OF EQuAL LENGTH
+item:
+    a reference to a 
+values:
+    a list of values to pair to the keys
+
+
+Returns
+-------
+
+a string showing the accuracy
+
+Example code if applicable:
+---------------------------
+data = xp.makeData('data.csv')
+
+# currently have to call for each character you want to split, upgrade coming
+data['text'] = xp.DFstrip(data['text'],'?')
+
 
 ``` 
 <br/>

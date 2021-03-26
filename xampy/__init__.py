@@ -156,6 +156,12 @@ def groupedAVG(df,cols):
 def dropCol(df, col):
     return df.drop(col,axis=1)
 
+def listsToDict(list1,list2):
+    return dict(zip(list1, list2))
+
+def DFstrip(item,remover):
+    return [x.strip(remover) for x in item]
+
 # for seniment analysis on larger chunks of text, bigger than social 
 # returns appended columns of comma sep subjectivity and polarity
 def bigSenti(df,column):
